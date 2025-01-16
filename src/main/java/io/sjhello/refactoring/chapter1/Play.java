@@ -4,12 +4,12 @@ public class Play {
 
 	private String name;
 
-	private String type;
+	private PlayType type;
 
 	public Play() {
 	}
 
-	public Play(String name, String type) {
+	public Play(String name, PlayType type) {
 		this.name = name;
 		this.type = type;
 	}
@@ -18,7 +18,7 @@ public class Play {
 		return name;
 	}
 
-	public String getType() {
+	public PlayType getType() {
 		return type;
 	}
 }

@@ -10,7 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 public class ReadJsonTest {
 
@@ -19,7 +21,9 @@ public class ReadJsonTest {
 
 	@BeforeEach
 	void setUp() {
-		this.objectMapper = new ObjectMapper();
+		this.objectMapper = JsonMapper.builder()
+			.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+			.build();
 		this.classLoader = this.getClass().getClassLoader();
 	}
 
@@ -34,6 +38,7 @@ public class ReadJsonTest {
 
 		assertThat(plays).isNotNull();
 		assertThat(plays.get("hamlet").getName()).isEqualTo("hamlet");
+		assertThat(plays.get("hamlet").getType()).isEqualTo(PlayType.TRAGEDY);
 	}
 
 	@Test
