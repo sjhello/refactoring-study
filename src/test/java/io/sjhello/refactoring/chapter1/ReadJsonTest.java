@@ -43,10 +43,10 @@ public class ReadJsonTest {
 
 	@Test
 	void invoiceReadTest() throws Exception {
-		InputStream invoiceStream = classLoader.getResourceAsStream("chapter1/invoice.json");
+		InputStream invoiceStream = classLoader.getResourceAsStream("chapter1/invoices.json");
 
 		if (invoiceStream == null) {
-			throw new IllegalStateException("Cannot find invoice.json");
+			throw new IllegalStateException("Cannot find invoices.json");
 		}
 		List<Invoice> invoices = objectMapper.readValue(invoiceStream, new TypeReference<>() {});
 
