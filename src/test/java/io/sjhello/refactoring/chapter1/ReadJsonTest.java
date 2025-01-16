@@ -3,7 +3,7 @@ package io.sjhello.refactoring.chapter1;
 import static org.assertj.core.api.Assertions.*;
 
 import java.io.InputStream;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +24,7 @@ public class ReadJsonTest {
 	}
 
 	@Test
-	void statement() throws Exception {
+	void playsJsonTest() throws Exception {
 		InputStream playsStream = classLoader.getResourceAsStream("chapter1/plays.json");
 
 		if (playsStream == null) {
@@ -34,5 +34,19 @@ public class ReadJsonTest {
 
 		assertThat(plays).isNotNull();
 		assertThat(plays.get("hamlet").getName()).isEqualTo("hamlet");
+	}
+
+	@Test
+	void invoiceReadTest() throws Exception {
+		InputStream invoiceStream = classLoader.getResourceAsStream("chapter1/invoice.json");
+
+		if (invoiceStream == null) {
+			throw new IllegalStateException("Cannot find invoice.json");
+		}
+		List<Invoice> invoices = objectMapper.readValue(invoiceStream, new TypeReference<>() {});
+
+		assertThat(invoices).isNotNull();
+		assertThat(invoices.size()).isEqualTo(1);
+		assertThat(invoices.get(0).getCustomer()).isEqualTo("BigCo");
 	}
 }
