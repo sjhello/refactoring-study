@@ -7,19 +7,20 @@ public class Statement {
 
 	public String statement(List<Invoice> invoices, Map<String, Play> playMap) {
 		int totalAmount = 0;
-		int volumeCredits = 0;
 		Invoice invoice = invoices.get(0);
 
 		StringBuilder result = new StringBuilder(String.format("청구 내역 (고객명: %s)\n", invoice.getCustomer()));
 
 		for (Performance performance : invoice.getPerformances()) {
-			// 포인트를 적립한다.
-			volumeCredits += volumeCreditsFor(performance, playMap);
-
 			// 청구내역을 출력한다
 			result.append(String.format("%s: $%d (%d석)\n", playFor(playMap, performance).getName(), amountFor(performance, playMap)
 				/ 100, performance.getAudience()));
 			totalAmount += amountFor(performance, playMap);
+		}
+
+		int volumeCredits = 0;
+		for (Performance performance : invoice.getPerformances()) {
+			volumeCredits += volumeCreditsFor(performance, playMap);
 		}
 
 		result.append(String.format("총액: $%d\n", totalAmount / 100));
@@ -29,7 +30,10 @@ public class Statement {
 
 	private int volumeCreditsFor(Performance performance, Map<String, Play> playMap) {
 		int volumeCredits = 0;
+
+		// 포인트를 적립한다.
 		volumeCredits += Math.max(performance.getAudience() - 30, 0);
+
 		// 희극 관객 5명마다 추가포인트를 제공한다.
 		if (playFor(playMap, performance).getType().equals(PlayType.COMEDY)) {
 			volumeCredits += Math.floor(performance.getAudience() / 5);
