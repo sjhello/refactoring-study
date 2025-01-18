@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Statement {
 
-	public static String statement(List<Invoice> invoices, Map<String, Play> playMap) {
+	public String statement(List<Invoice> invoices, Map<String, Play> playMap) {
 		int totalAmount = 0;
 		int volumeCredits = 0;
 		Invoice invoice = invoices.get(0);

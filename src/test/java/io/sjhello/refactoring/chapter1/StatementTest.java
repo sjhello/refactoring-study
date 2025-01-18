@@ -31,11 +31,13 @@ class StatementTest {
 	@Test
 	void statementTest() throws IOException {
 		// given
+		Statement statement = new Statement();
+
 		List<Invoice> invoices = findInvoices();
 		Map<String, Play> playMap = findPlays();
 
 		// then
-		String result = Statement.statement(invoices, playMap);
+		String result = statement.statement(invoices, playMap);
 		assertThat(result).isEqualTo("""
 			청구 내역 (고객명: BigCo)
 			Hamlet: $650 (55석)
