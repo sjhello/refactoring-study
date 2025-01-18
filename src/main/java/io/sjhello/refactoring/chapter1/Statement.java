@@ -13,7 +13,6 @@ public class Statement {
 		StringBuilder result = new StringBuilder(String.format("청구 내역 (고객명: %s)\n", invoice.getCustomer()));
 
 		for (Performance performance : invoice.getPerformances()) {
-			int thisAmount = amountFor(performance, playMap);
 
 			// 포인트를 적립한다.
 			volumeCredits += Math.max(performance.getAudience() - 30, 0);
@@ -24,8 +23,9 @@ public class Statement {
 			}
 
 			// 청구내역을 출력한다
-			result.append(String.format("%s: $%d (%d석)\n", playFor(playMap, performance).getName(), thisAmount / 100, performance.getAudience()));
-			totalAmount += thisAmount;
+			result.append(String.format("%s: $%d (%d석)\n", playFor(playMap, performance).getName(), amountFor(performance, playMap)
+				/ 100, performance.getAudience()));
+			totalAmount += amountFor(performance, playMap);
 		}
 
 		result.append(String.format("총액: $%d\n", totalAmount / 100));
