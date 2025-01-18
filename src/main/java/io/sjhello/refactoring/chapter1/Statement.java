@@ -13,19 +13,18 @@ public class Statement {
 		StringBuilder result = new StringBuilder(String.format("청구 내역 (고객명: %s)\n", invoice.getCustomer()));
 
 		for (Performance performance : invoice.getPerformances()) {
-			Play play = playFor(playMap, performance);
-			int thisAmount = amountFor(performance, play);
+			int thisAmount = amountFor(performance, playMap);
 
 			// 포인트를 적립한다.
 			volumeCredits += Math.max(performance.getAudience() - 30, 0);
 
 			// 희극 관객 5명마다 추가포인트를 제공한다.
-			if (PlayType.COMEDY.equals(play.getType())) {
+			if (PlayType.COMEDY.equals(playFor(playMap, performance).getType())) {
 				volumeCredits += Math.floor(performance.getAudience() / 5);
 			}
 
 			// 청구내역을 출력한다
-			result.append(String.format("%s: $%d (%d석)\n", play.getName(), thisAmount / 100, performance.getAudience()));
+			result.append(String.format("%s: $%d (%d석)\n", playFor(playMap, performance).getName(), thisAmount / 100, performance.getAudience()));
 			totalAmount += thisAmount;
 		}
 
@@ -38,9 +37,9 @@ public class Statement {
 		return playMap.get(performance.getPlayID());
 	}
 
-	private static int amountFor(Performance performance, Play play) {
+	private int amountFor(Performance performance, Map<String, Play> playMap) {
 		int result;
-		switch (play.getType()) {
+		switch (playFor(playMap, performance).getType()) {
 			case TRAGEDY:	// 비극
 				result = 40000;
 				if (performance.getAudience() > 30) {
@@ -55,7 +54,7 @@ public class Statement {
 				result += 300 * performance.getAudience();
 				break;
 			default:
-				throw new IllegalArgumentException("알 수 없는 장르: " + play.getType());
+				throw new IllegalArgumentException("알 수 없는 장르: " + playFor(playMap, performance).getType());
 		}
 		return result;
 	}
