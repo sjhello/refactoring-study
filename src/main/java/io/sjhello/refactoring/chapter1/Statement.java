@@ -21,11 +21,11 @@ public class Statement {
 
 	// 총액 계산
 	private int totalAmount(Map<String, Play> playMap, Invoice invoice) {
-		int totalAmount = 0;
+		int result = 0;
 		for (Performance performance : invoice.getPerformances()) {
-			totalAmount += amountFor(performance, playMap);
+			result += amountFor(performance, playMap);
 		}
-		return totalAmount;
+		return result;
 	}
 
 	private int amountFor(Performance performance, Map<String, Play> playMap) {
@@ -52,24 +52,24 @@ public class Statement {
 
 	// 적립 포인트 계산
 	private int totalVolumeCredits(Map<String, Play> playMap, Invoice invoice) {
-		int volumeCredits = 0;
+		int result = 0;
 		for (Performance performance : invoice.getPerformances()) {
-			volumeCredits += volumeCreditsFor(performance, playMap);
+			result += volumeCreditsFor(performance, playMap);
 		}
-		return volumeCredits;
+		return result;
 	}
 
 	private int volumeCreditsFor(Performance performance, Map<String, Play> playMap) {
-		int volumeCredits = 0;
+		int result = 0;
 
 		// 포인트를 적립한다.
-		volumeCredits += Math.max(performance.getAudience() - 30, 0);
+		result += Math.max(performance.getAudience() - 30, 0);
 
 		// 희극 관객 5명마다 추가포인트를 제공한다.
 		if (playFor(playMap, performance).getType().equals(PlayType.COMEDY)) {
-			volumeCredits += Math.floor(performance.getAudience() / 5);
+			result += Math.floor(performance.getAudience() / 5);
 		}
-		return volumeCredits;
+		return result;
 	}
 
 	private Play playFor(Map<String, Play> playMap, Performance performance) {
