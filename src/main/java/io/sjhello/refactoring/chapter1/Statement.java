@@ -6,19 +6,19 @@ import java.util.Map;
 public class Statement {
 
 	public String statement(List<Invoice> invoices, Map<String, Play> playMap) {
-		StatementData statementData = new StatementData(invoices.get(0));
-		return renderPlainText(playMap, statementData);
+		StatementData statementData = new StatementData(invoices.get(0), playMap);
+		return renderPlainText(statementData);
 	}
-	private String renderPlainText(Map<String, Play> playMap, StatementData statementData) {
+	private String renderPlainText(StatementData statementData) {
 		StringBuilder result = new StringBuilder(String.format("청구 내역 (고객명: %s)\n", statementData.getInvoice().getCustomer()));
 		for (Performance performance : statementData.getInvoice().getPerformances()) {
 			// 청구내역을 출력한다
-			result.append(String.format("%s: $%d (%d석)\n", playFor(playMap, performance).getName(), amountFor(performance,
-				playMap) / 100, performance.getAudience()));
+			result.append(String.format("%s: $%d (%d석)\n", playFor(statementData.getPlays(), performance).getName(), amountFor(performance,
+				statementData.getPlays()) / 100, performance.getAudience()));
 		}
 
-		result.append(String.format("총액: $%d\n", totalAmount(playMap, statementData.getInvoice()) / 100));
-		result.append(String.format("적립 포인트: %d점", totalVolumeCredits(playMap, statementData.getInvoice())));
+		result.append(String.format("총액: $%d\n", totalAmount(statementData.getPlays(), statementData.getInvoice()) / 100));
+		result.append(String.format("적립 포인트: %d점", totalVolumeCredits(statementData.getPlays(), statementData.getInvoice())));
 		return result.toString();
 	}
 
