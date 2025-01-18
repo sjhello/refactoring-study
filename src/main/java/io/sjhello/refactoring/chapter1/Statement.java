@@ -13,7 +13,7 @@ public class Statement {
 		StringBuilder result = new StringBuilder(String.format("청구 내역 (고객명: %s)\n", invoice.getCustomer()));
 
 		for (Performance performance : invoice.getPerformances()) {
-			Play play = playMap.get(performance.getPlayID());
+			Play play = playFor(playMap, performance);
 			int thisAmount = amountFor(performance, play);
 
 			// 포인트를 적립한다.
@@ -32,6 +32,10 @@ public class Statement {
 		result.append(String.format("총액: $%d\n", totalAmount / 100));
 		result.append(String.format("적립 포인트: %d점", volumeCredits));
 		return result.toString();
+	}
+
+	private Play playFor(Map<String, Play> playMap, Performance performance) {
+		return playMap.get(performance.getPlayID());
 	}
 
 	private static int amountFor(Performance performance, Play play) {
