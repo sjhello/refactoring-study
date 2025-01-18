@@ -31,18 +31,8 @@ class StatementTest {
 	@Test
 	void statementTest() throws IOException {
 		// given
-		InputStream invoicesStream = this.classLoader.getResourceAsStream("chapter1/invoices.json");
-		if (invoicesStream == null) {
-			throw new IllegalStateException("invoices.json not found");
-		}
-		List<Invoice> invoices = this.objectMapper.readValue(invoicesStream, new TypeReference<>() {
-		});
-
-		InputStream playMapStream = this.classLoader.getResourceAsStream("chapter1/plays.json");
-		if (playMapStream == null) {
-			throw new IllegalStateException("plays.json not found");
-		}
-		Map<String, Play> playMap = this.objectMapper.readValue(playMapStream, new TypeReference<>() {});
+		List<Invoice> invoices = findInvoices();
+		Map<String, Play> playMap = findPlays();
 
 		// then
 		String result = Statement.statement(invoices, playMap);
@@ -53,5 +43,24 @@ class StatementTest {
 			Othello: $500 (40석)
 			총액: $1730
 			적립 포인트: 47점""");
+	}
+
+	private Map<String, Play> findPlays() throws IOException {
+		InputStream playMapStream = this.classLoader.getResourceAsStream("chapter1/plays.json");
+		if (playMapStream == null) {
+			throw new IllegalStateException("plays.json not found");
+		}
+		Map<String, Play> playMap = this.objectMapper.readValue(playMapStream, new TypeReference<>() {});
+		return playMap;
+	}
+
+	private List<Invoice> findInvoices() throws IOException {
+		InputStream invoicesStream = this.classLoader.getResourceAsStream("chapter1/invoices.json");
+		if (invoicesStream == null) {
+			throw new IllegalStateException("invoices.json not found");
+		}
+		List<Invoice> invoices = this.objectMapper.readValue(invoicesStream, new TypeReference<>() {
+		});
+		return invoices;
 	}
 }
