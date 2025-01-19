@@ -34,20 +34,7 @@ public class Statement {
 	private int totalVolumeCredits(Map<String, Play> playMap, Invoice invoice, StatementData statementData) {
 		int result = 0;
 		for (Performance performance : invoice.getPerformances()) {
-			result += volumeCreditsFor(performance, playMap, statementData);
-		}
-		return result;
-	}
-
-	private int volumeCreditsFor(Performance performance, Map<String, Play> playMap, StatementData statementData) {
-		int result = 0;
-
-		// 포인트를 적립한다.
-		result += Math.max(performance.getAudience() - 30, 0);
-
-		// 희극 관객 5명마다 추가포인트를 제공한다.
-		if (statementData.playFor(performance).getType().equals(PlayType.COMEDY)) {
-			result += Math.floor(performance.getAudience() / 5);
+			result += statementData.volumeCreditsFor(performance);
 		}
 		return result;
 	}
