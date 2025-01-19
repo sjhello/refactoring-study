@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ class StatementTest {
 	}
 
 	@Test
-	void statementTest() throws IOException {
+	void plainTextStatementTest() throws IOException {
 		// given
 		Statement statement = new Statement();
 
@@ -37,7 +36,7 @@ class StatementTest {
 		Map<String, Play> playMap = findPlays();
 
 		// then
-		String result = statement.statement(invoices, playMap);
+		String result = statement.plainTextStatement(invoices, playMap);
 		assertThat(result).isEqualTo("""
 			청구 내역 (고객명: BigCo)
 			Hamlet: $650 (55석)

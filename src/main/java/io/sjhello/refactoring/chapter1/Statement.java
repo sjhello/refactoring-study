@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Statement {
 
-	public String statement(List<Invoice> invoices, Map<String, Play> playMap) {
+	public String plainTextStatement(List<Invoice> invoices, Map<String, Play> playMap) {
 		StatementData statementData = new StatementData(invoices.get(0), playMap);
 		return renderPlainText(statementData);
 	}
