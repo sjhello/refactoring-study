@@ -23,4 +23,8 @@ public class StatementData {
 	public Map<String, Play> getPlays() {
 		return plays;
 	}
+
+	public Play playFor(Performance performance) {
+		return plays.get(performance.getPlayID());
+	}
 }
