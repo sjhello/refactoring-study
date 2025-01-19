@@ -71,4 +71,13 @@ public class StatementData {
 		}
 		return result;
 	}
+
+	// 적립 포인트 계산
+	public int totalVolumeCredits() {
+		int result = 0;
+		for (Performance performance : invoice.getPerformances()) {
+			result += volumeCreditsFor(performance);
+		}
+		return result;
+	}
 }

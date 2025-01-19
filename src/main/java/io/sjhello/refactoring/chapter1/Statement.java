@@ -17,16 +17,7 @@ public class Statement {
 		}
 
 		result.append(String.format("총액: $%d\n", statementData.totalAmount() / 100));
-		result.append(String.format("적립 포인트: %d점", totalVolumeCredits(statementData.getPlays(), statementData.getInvoice(), statementData)));
+		result.append(String.format("적립 포인트: %d점", statementData.totalVolumeCredits()));
 		return result.toString();
-	}
-
-	// 적립 포인트 계산
-	private int totalVolumeCredits(Map<String, Play> playMap, Invoice invoice, StatementData statementData) {
-		int result = 0;
-		for (Performance performance : invoice.getPerformances()) {
-			result += statementData.volumeCreditsFor(performance);
-		}
-		return result;
 	}
 }
