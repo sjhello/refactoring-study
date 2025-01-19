@@ -47,7 +47,7 @@ class StatementTest {
 	}
 
 	@Test
-	void statementTest2() throws IOException {
+	void htmlStatementTest() throws IOException {
 		// given
 		Statement statement = new Statement();
 
