@@ -16,18 +16,9 @@ public class Statement {
 			result.append(String.format("%s: $%d (%d석)\n", statementData.playFor(performance).getName(), statementData.amountFor(performance) / 100, performance.getAudience()));
 		}
 
-		result.append(String.format("총액: $%d\n", totalAmount(statementData.getPlays(), statementData.getInvoice(), statementData) / 100));
+		result.append(String.format("총액: $%d\n", statementData.totalAmount() / 100));
 		result.append(String.format("적립 포인트: %d점", totalVolumeCredits(statementData.getPlays(), statementData.getInvoice(), statementData)));
 		return result.toString();
-	}
-
-	// 총액 계산
-	private int totalAmount(Map<String, Play> playMap, Invoice invoice, StatementData statementData) {
-		int result = 0;
-		for (Performance performance : invoice.getPerformances()) {
-			result += statementData.amountFor(performance);
-		}
-		return result;
 	}
 
 	// 적립 포인트 계산

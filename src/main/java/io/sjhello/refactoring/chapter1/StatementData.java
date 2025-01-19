@@ -62,4 +62,13 @@ public class StatementData {
 		}
 		return result;
 	}
+
+	// 총액 계산
+	public int totalAmount() {
+		int result = 0;
+		for (Performance performance : invoice.getPerformances()) {
+			result += amountFor(performance);
+		}
+		return result;
+	}
 }
