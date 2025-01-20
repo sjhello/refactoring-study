@@ -29,25 +29,7 @@ public class StatementData {
 	}
 
 	public int amountFor(Performance performance) {
-		int result;
-		switch (playFor(performance).getType()) {
-			case TRAGEDY:	// 비극
-				result = 40000;
-				if (performance.getAudience() > 30) {
-					result += 1000 * (performance.getAudience() - 30);
-				}
-				break;
-			case COMEDY:	// 희극
-				result = 30000;
-				if (performance.getAudience() > 20) {
-					result += 10000 + 500 * (performance.getAudience() - 20);
-				}
-				result += 300 * performance.getAudience();
-				break;
-			default:
-				throw new IllegalArgumentException("알 수 없는 장르: " + playFor(performance).getType());
-		}
-		return result;
+		return new PerformanceCalculator(performance, playFor(performance)).amount();
 	}
 
 	// 총액 계산
