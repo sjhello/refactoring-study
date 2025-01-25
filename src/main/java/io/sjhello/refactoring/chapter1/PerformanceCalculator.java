@@ -1,5 +1,7 @@
 package io.sjhello.refactoring.chapter1;
 
+import io.sjhello.refactoring.chapter1.calculator.TragedyCalculator;
+
 public class PerformanceCalculator {
 
     private Performance performance;
@@ -15,11 +17,7 @@ public class PerformanceCalculator {
         int result;
         switch (this.play.getType()) {
             case TRAGEDY:	// 비극
-                result = 40000;
-                if (this.performance.getAudience() > 30) {
-                    result += 1000 * (this.performance.getAudience() - 30);
-                }
-                break;
+                return new TragedyCalculator(performance).amount();
             case COMEDY:	// 희극
                 result = 30000;
                 if (this.performance.getAudience() > 20) {
