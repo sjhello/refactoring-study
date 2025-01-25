@@ -15,27 +15,24 @@ public class PerformanceCalculator {
     }
 
     public int amount() {
-        int result;
         switch (this.play.getType()) {
             case TRAGEDY:	// 비극
-                return new TragedyCalculator(performance).amount();
+                return new TragedyCalculator(performance, play).amount();
             case COMEDY:	// 희극
-                return new ComedyCalculator(performance).amount();
+                return new ComedyCalculator(performance, play).amount();
             default:
                 throw new IllegalArgumentException("알 수 없는 장르: " + this.play.getType());
         }
     }
 
     public int volumeCredits() {
-        int result = 0;
-
-        // 포인트를 적립한다.
-        result += Math.max(performance.getAudience() - 30, 0);
-
-        // 희극 관객 5명마다 추가포인트를 제공한다.
-        if (this.play.getType().equals(PlayType.COMEDY)) {
-            result += Math.floor(performance.getAudience() / 5);
+        switch (this.play.getType()) {
+            case TRAGEDY:	// 비극
+                return new TragedyCalculator(performance, play).volumeCredits();
+            case COMEDY:	// 희극
+                return new ComedyCalculator(performance, play).volumeCredits();
+            default:
+                throw new IllegalArgumentException("알 수 없는 장르: " + this.play.getType());
         }
-        return result;
     }
 }
