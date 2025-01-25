@@ -1,5 +1,6 @@
 package io.sjhello.refactoring.chapter1;
 
+import io.sjhello.refactoring.chapter1.calculator.ComedyCalculator;
 import io.sjhello.refactoring.chapter1.calculator.TragedyCalculator;
 
 public class PerformanceCalculator {
@@ -19,16 +20,10 @@ public class PerformanceCalculator {
             case TRAGEDY:	// 비극
                 return new TragedyCalculator(performance).amount();
             case COMEDY:	// 희극
-                result = 30000;
-                if (this.performance.getAudience() > 20) {
-                    result += 10000 + 500 * (this.performance.getAudience() - 20);
-                }
-                result += 300 * this.performance.getAudience();
-                break;
+                return new ComedyCalculator(performance).amount();
             default:
                 throw new IllegalArgumentException("알 수 없는 장르: " + this.play.getType());
         }
-        return result;
     }
 
     public int volumeCredits() {
