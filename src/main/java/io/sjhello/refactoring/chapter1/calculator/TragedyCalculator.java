@@ -1,22 +1,14 @@
 package io.sjhello.refactoring.chapter1.calculator;
 
 import io.sjhello.refactoring.chapter1.Performance;
+import io.sjhello.refactoring.chapter1.PerformanceCalculator;
 import io.sjhello.refactoring.chapter1.Play;
 import io.sjhello.refactoring.chapter1.PlayType;
 
-public class TragedyCalculator {
-
-	private Performance performance;
-
-	private Play play;
-
-	public TragedyCalculator(Performance performance) {
-		this.performance = performance;
-	}
+public class TragedyCalculator extends PerformanceCalculator {
 
 	public TragedyCalculator(Performance performance, Play play) {
-		this.performance = performance;
-		this.play = play;
+		super(performance, play);
 	}
 
 	public int amount() {

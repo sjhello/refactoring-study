@@ -1,13 +1,10 @@
 package io.sjhello.refactoring.chapter1;
 
-import io.sjhello.refactoring.chapter1.calculator.ComedyCalculator;
-import io.sjhello.refactoring.chapter1.calculator.TragedyCalculator;
-
 public class PerformanceCalculator {
 
-    private Performance performance;
+    protected Performance performance;
 
-    private Play play;
+    protected Play play;
 
     public PerformanceCalculator(Performance performance, Play play) {
         this.performance = performance;
@@ -15,24 +12,10 @@ public class PerformanceCalculator {
     }
 
     public int amount() {
-        switch (this.play.getType()) {
-            case TRAGEDY:	// 비극
-                return new TragedyCalculator(performance, play).amount();
-            case COMEDY:	// 희극
-                return new ComedyCalculator(performance, play).amount();
-            default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + this.play.getType());
-        }
+        throw new IllegalArgumentException("이미 서브 클래스에서 구현함");
     }
 
     public int volumeCredits() {
-        switch (this.play.getType()) {
-            case TRAGEDY:	// 비극
-                return new TragedyCalculator(performance, play).volumeCredits();
-            case COMEDY:	// 희극
-                return new ComedyCalculator(performance, play).volumeCredits();
-            default:
-                throw new IllegalArgumentException("알 수 없는 장르: " + this.play.getType());
-        }
+        throw new IllegalArgumentException("이미 서브 클래스에서 구현함");
     }
 }

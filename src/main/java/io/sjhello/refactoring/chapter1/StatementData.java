@@ -8,12 +8,12 @@ public class StatementData {
 
 	private Map<String, Play> plays;
 
-	public StatementData() {
-	}
+	private PerformanceCalculatorFactory performanceCalculatorFactory;
 
 	public StatementData(Invoice invoice, Map<String, Play> plays) {
 		this.invoice = invoice;
 		this.plays = plays;
+		this.performanceCalculatorFactory = new PerformanceCalculatorFactory();
 	}
 
 	public Invoice getInvoice() {
@@ -29,7 +29,9 @@ public class StatementData {
 	}
 
 	public int amountFor(Performance performance) {
-		return new PerformanceCalculator(performance, playFor(performance)).amount();
+		return this.performanceCalculatorFactory
+			.createPerformanceCalculator(playFor(performance), performance)
+			.amount();
 	}
 
 	// 총액 계산
@@ -51,6 +53,8 @@ public class StatementData {
 	}
 
 	private int volumeCreditsFor(Performance performance) {
-		return new PerformanceCalculator(performance, playFor(performance)).volumeCredits();
+		return this.performanceCalculatorFactory
+			.createPerformanceCalculator(playFor(performance), performance)
+			.volumeCredits();
 	}
 }
