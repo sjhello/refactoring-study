@@ -2,6 +2,8 @@ package io.sjhello.refactoring.chapter1;
 
 import java.util.Map;
 
+import io.sjhello.refactoring.chapter1.calculator.PerformanceCalculatorFactory;
+
 public class StatementData {
 
 	private Invoice invoice;

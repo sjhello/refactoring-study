@@ -1,7 +1,7 @@
-package io.sjhello.refactoring.chapter1;
+package io.sjhello.refactoring.chapter1.calculator;
 
-import io.sjhello.refactoring.chapter1.calculator.ComedyCalculator;
-import io.sjhello.refactoring.chapter1.calculator.TragedyCalculator;
+import io.sjhello.refactoring.chapter1.Performance;
+import io.sjhello.refactoring.chapter1.Play;
 
 public class PerformanceCalculatorFactory {
 

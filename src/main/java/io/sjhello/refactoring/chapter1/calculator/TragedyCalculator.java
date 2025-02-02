@@ -1,7 +1,6 @@
 package io.sjhello.refactoring.chapter1.calculator;
 
 import io.sjhello.refactoring.chapter1.Performance;
-import io.sjhello.refactoring.chapter1.PerformanceCalculator;
 import io.sjhello.refactoring.chapter1.Play;
 import io.sjhello.refactoring.chapter1.PlayType;
 
