@@ -17,6 +17,12 @@ public class Producer {
 		this.production = producer.getProduction();
 	}
 
+	public Producer(String name, Integer cost, Integer production) {
+		this.name = name;
+		this.cost = cost;
+		this.production = production;
+	}
+
 	public Province getProvince() {
 		return province;
 	}
