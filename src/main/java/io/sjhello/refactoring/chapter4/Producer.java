@@ -8,7 +8,14 @@ public class Producer {
 
 	private Integer cost;
 
-	private Integer productions;
+	private Integer production;
+
+	public Producer(Province province, Producer producer) {
+		this.province = province;
+		this.name = producer.getName();
+		this.cost = producer.getCost();
+		this.production = producer.getProduction();
+	}
 
 	public Province getProvince() {
 		return province;
@@ -34,11 +41,14 @@ public class Producer {
 		this.cost = cost;
 	}
 
-	public Integer getProductions() {
-		return productions;
+	public Integer getProduction() {
+		return production;
 	}
 
-	public void setProductions(Integer productions) {
-		this.productions = productions;
+	public void setProduction(String amountStr) {
+		Integer amount = Integer.parseInt(amountStr);
+		Integer newProduction = amount.equals(0) ? 0 : amount;
+		this.province.setTotalProduction(newProduction - this.production);
+		this.production = newProduction;
 	}
 }
