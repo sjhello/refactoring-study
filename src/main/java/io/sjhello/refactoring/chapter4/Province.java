@@ -49,7 +49,7 @@ public class Province {
 	}
 
 	public Integer getDemandValue() {
-		return 0;
+		return getSatisfiedDemand() * this.price;
 	}
 
 	public Integer getSatisfiedDemand() {
