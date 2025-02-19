@@ -41,4 +41,33 @@ class ProvinceTest {
 		assertThat(province.getShortFall()).isEqualTo(-6);
 		assertThat(province.getProfit()).isEqualTo(292);
 	}
+
+	@Test
+	void noProducer() {
+		Province noProducer = noProducerFixture();
+
+		assertThat(noProducer.getShortFall()).isEqualTo(30);
+		assertThat(noProducer.getProfit()).isEqualTo(0);
+	}
+
+	@Test
+	void zeroDemand() {
+		province.setDemand(0);
+
+		assertThat(province.getShortFall()).isEqualTo(-25);
+		assertThat(province.getProfit()).isEqualTo(0);
+	}
+
+	@Test
+	void negativeDemand() {
+		province.setDemand(-1);
+
+		assertThat(province.getShortFall()).isEqualTo(-26);
+		assertThat(province.getProfit()).isEqualTo(-10);
+	}
+
+	private Province noProducerFixture() {
+		List<Producer> producers = new ArrayList<>();
+		return new Province("Asia", producers, 30, 20);
+	}
 }
