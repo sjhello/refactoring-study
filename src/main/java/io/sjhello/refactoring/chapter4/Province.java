@@ -98,7 +98,7 @@ public class Province {
 	}
 
 	public void setTotalProduction(Integer totalProduction) {
-		this.totalProduction = totalProduction;
+		this.totalProduction += totalProduction;
 	}
 
 	public void setDemand(Integer demand) {
