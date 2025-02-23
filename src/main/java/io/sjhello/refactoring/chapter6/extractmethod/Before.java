@@ -9,14 +9,18 @@ public class Before {
 
         printBanner();
 
-        // 미해결 채무(outstanding)을 계산한다
+        int outstanding = calculateOutstanding(invoice);
+
+        recordDueDate(invoice);
+        printDetail(invoice, outstanding);
+    }
+
+    private static int calculateOutstanding(Invoice invoice) {
         int outstanding = 0;
         for (int o : invoice.getOrders()) {
            outstanding += o;
         }
-
-        recordDueDate(invoice);
-        printDetail(invoice, outstanding);
+        return outstanding;
     }
 
     private void recordDueDate(Invoice invoice) {
