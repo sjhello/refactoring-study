@@ -8,11 +8,8 @@ public class Before2 {
     public Map<String, String> reportLines(Customer aCustomer) {
         Map<String, String> lines = new HashMap<>();
         lines.put("name", aCustomer.getName());
-        gatherCustomerData(lines, aCustomer);
+        lines.put("location", aCustomer.getLocation());
         return lines;
     }
 
-    private void gatherCustomerData(Map<String, String> out, Customer aCustomer) {
-        out.put("location", aCustomer.getLocation());
-    }
 }
