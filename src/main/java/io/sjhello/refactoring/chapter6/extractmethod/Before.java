@@ -7,9 +7,7 @@ public class Before {
     public void printOwing(Invoice invoice) {
         int outstanding = 0;
 
-        System.out.println("=====================");
-        System.out.println("===========고객 채무==========");
-        System.out.println("=====================");
+        printBanner();
 
         // 미해결 채무(outstanding)을 계산한다
         for (int o : invoice.getOrders()) {
@@ -24,5 +22,11 @@ public class Before {
         System.out.println("고객명: " + invoice.getCustomer());
         System.out.println("채무액: " + outstanding);
         System.out.println("마감일: " + invoice.getDueDate());
+    }
+
+    private static void printBanner() {
+        System.out.println("=====================");
+        System.out.println("===========고객 채무==========");
+        System.out.println("=====================");
     }
 }
