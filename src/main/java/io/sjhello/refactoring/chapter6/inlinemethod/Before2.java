@@ -7,12 +7,12 @@ public class Before2 {
 
     public Map<String, String> reportLines(Customer aCustomer) {
         Map<String, String> lines = new HashMap<>();
+        lines.put("name", aCustomer.getName());
         gatherCustomerData(lines, aCustomer);
         return lines;
     }
 
     private void gatherCustomerData(Map<String, String> out, Customer aCustomer) {
-        out.put("name", aCustomer.getName());
         out.put("location", aCustomer.getLocation());
     }
 }
