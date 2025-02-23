@@ -5,17 +5,17 @@ import java.time.LocalDateTime;
 public class Before {
 
     public void printOwing(Invoice invoice) {
-        int outstanding = 0;
+
 
         printBanner();
 
         // 미해결 채무(outstanding)을 계산한다
+        int outstanding = 0;
         for (int o : invoice.getOrders()) {
            outstanding += o;
         }
 
         recordDueDate(invoice);
-
         printDetail(invoice, outstanding);
     }
 
