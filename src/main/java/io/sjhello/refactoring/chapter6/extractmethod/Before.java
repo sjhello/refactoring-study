@@ -18,7 +18,10 @@ public class Before {
         LocalDateTime today = Clock.today();
         invoice.setDueDate(today.plusDays(today.getDayOfMonth() + 30));
 
-        // 세부사항을 출력한다.
+        printDetail(invoice, outstanding);
+    }
+
+    private static void printDetail(Invoice invoice, int outstanding) {
         System.out.println("고객명: " + invoice.getCustomer());
         System.out.println("채무액: " + outstanding);
         System.out.println("마감일: " + invoice.getDueDate());
