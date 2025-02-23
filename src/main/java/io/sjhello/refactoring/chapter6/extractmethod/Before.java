@@ -14,20 +14,23 @@ public class Before {
            outstanding += o;
         }
 
-        // 마감일(dueDate)을 기록한다
-        LocalDateTime today = Clock.today();
-        invoice.setDueDate(today.plusDays(today.getDayOfMonth() + 30));
+        recordDueDate(invoice);
 
         printDetail(invoice, outstanding);
     }
 
-    private static void printDetail(Invoice invoice, int outstanding) {
+    private void recordDueDate(Invoice invoice) {
+        LocalDateTime today = Clock.today();
+        invoice.setDueDate(today.plusDays(today.getDayOfMonth() + 30));
+    }
+
+    private void printDetail(Invoice invoice, int outstanding) {
         System.out.println("고객명: " + invoice.getCustomer());
         System.out.println("채무액: " + outstanding);
         System.out.println("마감일: " + invoice.getDueDate());
     }
 
-    private static void printBanner() {
+    private void printBanner() {
         System.out.println("=====================");
         System.out.println("===========고객 채무==========");
         System.out.println("=====================");
