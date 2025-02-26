@@ -12,7 +12,7 @@ public class Customer {
         return address;
     }
 
-    class Address {
+    static class Address {
         private String state;
 
         public Address(String state) {
