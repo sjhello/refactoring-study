@@ -5,8 +5,7 @@ import java.util.List;
 public class Before {
 
     public static boolean inNewEngland(Customer customer) {
-        String state = customer.getAddress().getState();
-        return xxNewInNewEngland(state);
+        return xxNewInNewEngland(customer.getAddress().getState());
     }
 
     private static boolean xxNewInNewEngland(String state) {
