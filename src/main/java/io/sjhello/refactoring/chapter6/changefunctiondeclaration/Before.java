@@ -12,10 +12,6 @@ public class Before {
         System.out.println(inNewEngland(customer.getAddress().getState()));
     }
 
-    public static boolean inNewEngland(Customer customer) {
-        return inNewEngland(customer.getAddress().getState());
-    }
-
     private static boolean inNewEngland(String state) {
         return List.of(
                 "MA",
