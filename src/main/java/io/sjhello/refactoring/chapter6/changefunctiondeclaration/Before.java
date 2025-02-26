@@ -5,6 +5,7 @@ import java.util.List;
 public class Before {
 
     public static boolean inNewEngland(Customer customer) {
+        String state = customer.getAddress().getState();
         return List.of(
                 "MA",
                 "CT",
@@ -12,6 +13,6 @@ public class Before {
                 "VT",
                 "NH",
                 "RI"
-        ).contains(customer.getAddress().getState());
+        ).contains(state);
     }
 }
