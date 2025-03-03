@@ -12,10 +12,11 @@ class EncapsulateCollectionTest {
 	@Test
 	void advancedCourses() {
 		Person person = mockPerson(mockCourses());
+		person.addCourse(new Course("science", true));
 
 		int numAdvancedCourses = EncapsulateCollection.advancedCourses(person);
 
-		assertThat(numAdvancedCourses).isEqualTo(0);
+		assertThat(numAdvancedCourses).isEqualTo(1);
 	}
 
 	private Person mockPerson(List<Course> courses) {
