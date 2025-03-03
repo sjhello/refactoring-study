@@ -5,7 +5,11 @@ public class Order {
 	private Priority priority;
 
 	public Order(Priority priority) {
-		setPriority(priority);
+		this(priority.toString());
+	}
+
+	public Order(String value) {
+		this.priority = new Priority(value);
 	}
 
 	public Priority getPriority() {
@@ -14,13 +18,5 @@ public class Order {
 
 	public String getPriorityToString() {
 		return priority.toString();
-	}
-
-	public void setPriority(String priorityValue) {
-		this.priority = new Priority(priorityValue);
-	}
-
-	private void setPriority(Priority priority) {
-		setPriority(priority.toString());
 	}
 }
