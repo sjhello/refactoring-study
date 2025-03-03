@@ -10,6 +10,6 @@ class OrganizationTest {
 	void organizationName() {
 		Organization organization = EncapsulatedRecord.getOrganization();
 
-		assertThat(organization.name).isEqualTo("Acme Gooseberries");
+		assertThat(organization.getName()).isEqualTo("Acme Gooseberries");
 	}
 }
