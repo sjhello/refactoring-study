@@ -1,29 +1,30 @@
 package io.sjhello.refactoring.chapter7.replaceprimitivewithobject;
 
-import java.util.List;
+import java.util.Arrays;
 
-public class Priority {
+public enum Priority {
 
-	private String value;
+    HIGH("high"),
+    RUSH("rush");
 
-	public Priority(String value) {
-		if (legalValues().contains(value)) {
-			this.value = value;
-		} else {
-			throw new IllegalArgumentException(value + "는 유효하지 않은 우선순위 입니다.");
-		}
-	}
+    private final String value;
 
-	@Override
-	public String toString() {
-		return this.value;
-	}
+    Priority(String value) {
+        this.value = value;
+    }
 
-	private static List<String> legalValues() {
-		return List.of("high", "rush");
-	}
+    public String getValue() {
+        return value;
+    }
 
-	public boolean higherThan(String value) {
-		return value.equals("high") || value.equals("rush");
-	}
+    public static Priority from(String value) {
+        return Arrays.stream(values())
+                .filter(enumValue -> enumValue.value.equalsIgnoreCase(value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(value + "는 유효하지 않은 우선순위 입니다."));
+    }
+
+    public boolean isHigher() {
+        return this == HIGH || this == RUSH;
+    }
 }
