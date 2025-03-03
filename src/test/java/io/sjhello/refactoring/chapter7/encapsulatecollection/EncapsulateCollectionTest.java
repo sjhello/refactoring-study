@@ -27,6 +27,22 @@ class EncapsulateCollectionTest {
 		assertThat(person.getCourses().size()).isEqualTo(1);
 	}
 
+	@Test
+	void removeCourseWhenIndexIsNegativeThrowException() {
+		Person person = mockPerson(mockCourses());
+
+		assertThatThrownBy(() -> person.removeCourse(-1))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	void removeCourseWhenIndexIsBiggerThanSizeThrowException() {
+		Person person = mockPerson(mockCourses());
+
+		assertThatThrownBy(() -> person.removeCourse(2))
+			.isInstanceOf(IndexOutOfBoundsException.class);
+	}
+
 	private Person mockPerson(List<Course> courses) {
 		return new Person("Xuemin", courses);
 	}
