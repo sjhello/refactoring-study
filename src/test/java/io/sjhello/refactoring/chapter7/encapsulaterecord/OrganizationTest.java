@@ -12,4 +12,13 @@ class OrganizationTest {
 
 		assertThat(organization.getName()).isEqualTo("Acme Gooseberries");
 	}
+
+	@Test
+	void settingOrganizationName() {
+		Organization organization = EncapsulatedRecord.getOrganization();
+
+		organization.setName("my Acme Gooseberries");
+
+		assertThat(organization.getName()).isEqualTo("my Acme Gooseberries");
+	}
 }
