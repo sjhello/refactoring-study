@@ -23,4 +23,8 @@ public class Person {
 	public void addCourse(Course course) {
 		this.courses.add(course);
 	}
+
+	public void removeCourse(int index) {
+		this.courses.remove(index);
+	}
 }

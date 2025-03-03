@@ -19,6 +19,14 @@ class EncapsulateCollectionTest {
 		assertThat(numAdvancedCourses).isEqualTo(1);
 	}
 
+	@Test
+	void removeCourse() {
+		Person person = mockPerson(mockCourses());
+		person.removeCourse(0);
+
+		assertThat(person.getCourses().size()).isEqualTo(1);
+	}
+
 	private Person mockPerson(List<Course> courses) {
 		return new Person("Xuemin", courses);
 	}
