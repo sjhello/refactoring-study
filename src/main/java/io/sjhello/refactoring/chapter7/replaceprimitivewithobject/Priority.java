@@ -22,4 +22,8 @@ public class Priority {
 	private static List<String> legalValues() {
 		return List.of("high", "rush");
 	}
+
+	public boolean higherThan(String value) {
+		return value.equals("high") || value.equals("rush");
+	}
 }
