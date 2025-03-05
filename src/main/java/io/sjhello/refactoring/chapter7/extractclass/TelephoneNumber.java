@@ -4,44 +4,28 @@ import java.util.Objects;
 
 public class TelephoneNumber {
 
-    private String officeAreaCode;
-    private String officeNumber;
+    private String areaCode;
+    private String number;
 
-    public TelephoneNumber(String officeAreaCode, String officeNumber) {
-        this.officeAreaCode = officeAreaCode;
-        this.officeNumber = officeNumber;
+    public TelephoneNumber(String areaCode, String number) {
+        this.areaCode = areaCode;
+        this.number = number;
     }
 
     @Override
     public String toString() {
-        return officeAreaCode + "-" + officeNumber;
+        return areaCode + "-" + number;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TelephoneNumber that = (TelephoneNumber) o;
-        return Objects.equals(officeAreaCode, that.officeAreaCode) && Objects.equals(officeNumber, that.officeNumber);
+        return Objects.equals(areaCode, that.areaCode) && Objects.equals(number, that.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(officeAreaCode, officeNumber);
-    }
-
-    public String getOfficeAreaCode() {
-        return officeAreaCode;
-    }
-
-    public void setOfficeAreaCode(String officeAreaCode) {
-        this.officeAreaCode = officeAreaCode;
-    }
-
-    public String getOfficeNumber() {
-        return officeNumber;
-    }
-
-    public void setOfficeNumber(String officeNumber) {
-        this.officeNumber = officeNumber;
+        return Objects.hash(areaCode, number);
     }
 }
