@@ -14,10 +14,6 @@ public class Person {
         return name;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
     public String getManager() {
         return department.getManager();
     }
