@@ -3,7 +3,6 @@ package io.sjhello.refactoring.chapter7.extractclass;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
@@ -11,6 +10,6 @@ class PersonTest {
     void person() {
         Person person = new Person("person", "010", "3333");
 
-        assertThat(person.getTelephoneNumber()).isEqualTo("010-3333");
+        assertThat(person.getTelephoneNumber()).isEqualTo(new TelephoneNumber("010", "3333"));
     }
 }
