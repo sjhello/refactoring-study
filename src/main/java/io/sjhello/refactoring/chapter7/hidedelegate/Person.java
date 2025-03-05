@@ -7,7 +7,7 @@ public class Person {
 
     public Person(String name) {
         this.name = name;
-        this.department = new Department("code", "manager");
+        this.department = new Department("manager");
     }
 
     public String getName() {
@@ -16,5 +16,9 @@ public class Person {
 
     public Department getDepartment() {
         return department;
+    }
+
+    public String getManager() {
+        return department.getManager();
     }
 }

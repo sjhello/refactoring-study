@@ -3,7 +3,6 @@ package io.sjhello.refactoring.chapter7.hidedelegate;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
@@ -11,7 +10,7 @@ class PersonTest {
     void hideDelegate() {
         Person person = new Person("person");
 
-        String manager = person.getDepartment().getManager();
+        String manager = person.getManager();
 
         assertThat(manager).isEqualTo("manager");
     }
