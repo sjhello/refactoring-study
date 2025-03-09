@@ -10,8 +10,12 @@ public class Customer {
 
     public Customer(String name, double discountRate) {
         this.name = name;
-        this.discountRate = discountRate;
+        setDiscountRate(discountRate);
         this.contract = new CustomerContract(LocalDate.now());
+    }
+
+    private void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
     }
 
     public double getDiscountRate() {
@@ -19,11 +23,11 @@ public class Customer {
     }
 
     public void becomePreferred() {
-        this.discountRate += 0.03;
+        setDiscountRate(getDiscountRate() + 0.03);
         // 다른 멋진 일들
     }
 
     public double applyDiscount(double amount) {
-        return amount - (amount * discountRate);
+        return amount - (amount * getDiscountRate());
     }
 }
