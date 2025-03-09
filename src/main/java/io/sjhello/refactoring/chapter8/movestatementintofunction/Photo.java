@@ -31,18 +31,18 @@ public class Photo {
         return date;
     }
 
-    public Map<String, String> renderPerson(Person person) {
-        Map<String, String> result = new HashMap<>();
-        result.put("name", person.getName());
-        result.put("title", person.getPhoto().getTitle());
-        result.put("photoData", emitPhotoData());
+    public List<String> renderPerson(Person person) {
+        List<String> result = new ArrayList<>();
+        result.add(person.getName());
+        result.add(person.getPhoto().getTitle());
+        result.add(emitPhotoData());
         return result;
     }
 
-    public Map<String, String> photoDiv(Person person) {
-        Map<String, String> result = new HashMap<>();
-        result.put("title", person.getPhoto().getTitle());
-        result.put("photoData", emitPhotoData());
+    public List<String> photoDiv(Person person) {
+        List<String> result = new ArrayList<>();
+        result.add(person.getPhoto().getTitle());
+        result.add(emitPhotoData());
         return result;
     }
 
