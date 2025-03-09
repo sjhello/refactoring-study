@@ -17,10 +17,10 @@ public class Account {
     }
 
     public double getOverDraftCharge() {
-        return type.getOverDraftCharge(getDaysOverdrawn());
+        return type.getOverDraftCharge(this);
     }
 
-    private int getDaysOverdrawn() {
+    public int getDaysOverdrawn() {
         return daysOverdrawn;
     }
 }
