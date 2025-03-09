@@ -9,14 +9,18 @@ public class CustomerContract {
 
     public CustomerContract(LocalDate startDate, double discountRate) {
         this.startDate = startDate;
-        this.discountRate = discountRate;
+        setDiscountRate(discountRate);
     }
 
-    public void setDiscountRate(double discountRate) {
+    private void setDiscountRate(double discountRate) {
         this.discountRate = discountRate;
     }
 
     public double getDiscountRate() {
         return discountRate;
+    }
+
+    public void becomePreferred() {
+        setDiscountRate(getDiscountRate() + 0.03);
     }
 }
