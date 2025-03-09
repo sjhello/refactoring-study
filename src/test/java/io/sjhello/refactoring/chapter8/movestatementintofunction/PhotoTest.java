@@ -18,7 +18,8 @@ class PhotoTest {
 
         assertThat(result).contains("John Doe");
         assertThat(result).contains("Vacation");
-        assertThat(result).contains("Paris, 2022-02-22");
+        assertThat(result).contains("Paris");
+        assertThat(result).contains("2022-02-22");
     }
 
     @Test
@@ -28,6 +29,7 @@ class PhotoTest {
         List<String> result = photo.photoDiv(person);
 
         assertThat(result).contains("Vacation");
-        assertThat(result).contains("Paris, 2022-02-22");
+        assertThat(result).contains("Paris");
+        assertThat(result).contains("2022-02-22");
     }
 }

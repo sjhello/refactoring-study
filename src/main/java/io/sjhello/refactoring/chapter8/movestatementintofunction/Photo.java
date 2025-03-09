@@ -3,9 +3,7 @@ package io.sjhello.refactoring.chapter8.movestatementintofunction;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Photo {
 
@@ -34,22 +32,19 @@ public class Photo {
     public List<String> renderPerson(Person person) {
         List<String> result = new ArrayList<>();
         result.add(person.getName());
-        result.add(person.getPhoto().getTitle());
-        result.add(emitPhotoData());
+        emitPhotoData(person, result);
         return result;
     }
 
     public List<String> photoDiv(Person person) {
         List<String> result = new ArrayList<>();
-        result.add(person.getPhoto().getTitle());
-        result.add(emitPhotoData());
+        emitPhotoData(person, result);
         return result;
     }
 
-    private String emitPhotoData() {
-        List<String> result = new ArrayList<>();
+    private void emitPhotoData(Person person, List<String> result) {
+        result.add(person.getPhoto().getTitle());
         result.add(getLocation());
         result.add(getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        return String.join(", ", result);
     }
 }
