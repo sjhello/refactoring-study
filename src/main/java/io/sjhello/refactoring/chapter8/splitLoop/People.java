@@ -16,8 +16,11 @@ public class People {
 		int youngest = peoples.isEmpty() ? Integer.MAX_VALUE : peoples.get(0).getAge();
 		int totalSalary = 0;
 		for (People people : peoples) {
-			if (people.getAge() < youngest) youngest = people.getAge();
 			totalSalary += people.getSalary();
+		}
+
+		for (People people : peoples) {
+			if (people.getAge() < youngest) youngest = people.getAge();
 		}
 	}
 
