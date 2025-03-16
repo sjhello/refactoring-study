@@ -13,15 +13,25 @@ public class People {
 
 	public static void main(String[] args) {
 		List<People> peoples = List.of(new People(12, 500), new People(20, 1000));
-		int youngest = peoples.isEmpty() ? Integer.MAX_VALUE : peoples.get(0).getAge();
+
+		System.out.println("총 급여: " + totalSalary(peoples));
+		System.out.println("최연소:" + youngestAge(peoples));
+	}
+
+	private static int totalSalary(List<People> peoples) {
 		int totalSalary = 0;
 		for (People people : peoples) {
 			totalSalary += people.getSalary();
 		}
+		return totalSalary;
+	}
 
+	private static int youngestAge(List<People> peoples) {
+		int youngest = peoples.isEmpty() ? Integer.MAX_VALUE : peoples.get(0).getAge();
 		for (People people : peoples) {
 			if (people.getAge() < youngest) youngest = people.getAge();
 		}
+		return youngest;
 	}
 
 	public int getAge() {
