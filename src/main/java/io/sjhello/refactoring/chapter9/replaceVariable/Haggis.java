@@ -1,4 +1,4 @@
-package io.sjhello.refactoring.chapter9;
+package io.sjhello.refactoring.chapter9.replaceVariable;
 
 public class Haggis {
 	public double distanceTravelled(Scenario scenario, int time) {

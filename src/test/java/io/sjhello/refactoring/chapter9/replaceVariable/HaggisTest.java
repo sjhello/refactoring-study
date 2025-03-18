@@ -1,4 +1,4 @@
-package io.sjhello.refactoring.chapter9;
+package io.sjhello.refactoring.chapter9.replaceVariable;
 
 import static org.assertj.core.api.Assertions.*;
 
