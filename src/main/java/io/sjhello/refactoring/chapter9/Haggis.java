@@ -10,8 +10,8 @@ public class Haggis {
 
 		if (secondaryTime > 0) {
 			int primaryVelocity = primaryAcceleration * scenario.delay;
-			int acc = (scenario.primaryForce + scenario.secondaryForce) / scenario.mass;
-			result += primaryVelocity * secondaryTime + 0.5 * acc * secondaryTime * secondaryTime;
+			int secondaryAcceleration = (scenario.primaryForce + scenario.secondaryForce) / scenario.mass;
+			result += primaryVelocity * secondaryTime + 0.5 * secondaryAcceleration * secondaryTime * secondaryTime;
 		}
 
 		return result;
