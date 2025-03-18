@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductionPlan {
-
 	private int production;
 	private List<Adjustment> adjustments = new ArrayList<>();
 
@@ -13,7 +12,9 @@ public class ProductionPlan {
 	}
 
 	public int getProduction() {
-		return production;
+		return adjustments.stream()
+			.map(Adjustment::getAmount)
+			.reduce(production, Integer::sum);
 	}
 
 	public List<Adjustment> getAdjustments() {
@@ -22,6 +23,5 @@ public class ProductionPlan {
 
 	public void applyAdjestment(Adjustment anAdjustment) {
 		adjustments.add(anAdjustment);
-		production += anAdjustment.getAmount();
 	}
 }
