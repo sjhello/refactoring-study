@@ -4,9 +4,9 @@ public class Order {
 	private int number;
 	private Customer customer;
 
-	public Order(int number, int id) {
+	public Order(int number, int id, String customerName) {
 		this.number = number;
-		this.customer = new Customer(id);
+		this.customer = CustomerRepository.registerCustomer(id, customerName);
 	}
 
 	public Customer getCustomer() {
