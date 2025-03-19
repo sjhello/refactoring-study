@@ -10,7 +10,6 @@ class TelephoneNumberTest {
 	void immutable() {
 		TelephoneNumber paris = new TelephoneNumber("paris", 20);
 
-		assertThat(paris.getAreaCode()).isEqualTo("paris");
-		assertThat(paris.getNumber()).isEqualTo(20);
+		assertThat(paris).isEqualTo(new TelephoneNumber("paris", 20));
 	}
 }
