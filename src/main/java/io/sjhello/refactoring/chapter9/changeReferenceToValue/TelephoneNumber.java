@@ -1,23 +1,19 @@
 package io.sjhello.refactoring.chapter9.changeReferenceToValue;
 
 public class TelephoneNumber {
+	private final String areaCode;
+	private final int number;
 
-	String areaCode;
-	int number;
+	public TelephoneNumber(String areaCode, int number) {
+		this.areaCode = areaCode;
+		this.number = number;
+	}
 
 	public String getAreaCode() {
 		return areaCode;
-	}
 
-	public void setAreaCode(String areaCode) {
-		this.areaCode = areaCode;
 	}
-
 	public int getNumber() {
 		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
 	}
 }
