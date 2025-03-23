@@ -4,14 +4,8 @@ import static io.sjhello.refactoring.chapter10.replaceNestedConditionalWithGuard
 
 public class PayAmount {
     public static PayAmountResult payAmount(Employee employee) {
-        if (employee.isSeparated()) { // 퇴사한 직원인가?
-            return new PayAmountResult(0, SEP);
-        } else {
-            if (employee.isRetired()) { // 은퇴한 직원인가?
-                return new PayAmountResult(0, RET);
-            } else {    // 급여 계산 로직
-                return new PayAmountResult(1000, AMOUNT);
-            }
-        }
+        if (employee.isSeparated()) return new PayAmountResult(0, SEP);
+        if (employee.isRetired()) return new PayAmountResult(0, RET);
+        return new PayAmountResult(1000, AMOUNT);
     }
 }
