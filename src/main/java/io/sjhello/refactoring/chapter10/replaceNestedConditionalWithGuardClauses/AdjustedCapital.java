@@ -3,10 +3,8 @@ package io.sjhello.refactoring.chapter10.replaceNestedConditionalWithGuardClause
 public class AdjustedCapital {
 
     public static int adjustedCapital(Instrument instrument) {
-        int result = 0;
-        if (isABoolean(instrument)) return result;
-        result = (instrument.getIncome() / instrument.getDuration()) * instrument.getAdjustmentFactor();
-        return result;
+        if (isABoolean(instrument)) return 0;
+        return (instrument.getIncome() / instrument.getDuration()) * instrument.getAdjustmentFactor();
     }
 
     private static boolean isABoolean(Instrument instrument) {
