@@ -2,8 +2,8 @@ package io.sjhello.refactoring.chapter12.replaceTypeCodeWithSubclasses;
 
 public class Engineer extends Employee {
 
-    protected Engineer(String name, String type) {
-        super(name, type);
+    protected Engineer(String name) {
+        super(name);
     }
 
     public String getType() {

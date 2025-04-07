@@ -2,11 +2,10 @@ package io.sjhello.refactoring.chapter12.replaceTypeCodeWithSubclasses;
 
 public class Sales extends Employee {
 
-    protected Sales(String name, String type) {
-        super(name, type);
+    protected Sales(String name) {
+        super(name);
     }
 
-    @Override
     public String getType() {
         return "sales!!!!";
     }

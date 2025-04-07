@@ -8,20 +8,20 @@ class EmployeeTest {
 
     @Test
     void createEngineer() {
-        Employee engineer = Employee.createEmployee("good engineer", "engineer");
-        assertThat(engineer.getType()).isEqualTo("engineer!!!!");
+        Employee engineer = Engineer.createEmployee("good engineer", "engineer");
+        assertThat(engineer).isInstanceOf(Engineer.class);
     }
 
     @Test
     void createSales() {
-        Employee engineer = Employee.createEmployee("good sales", "sales");
-        assertThat(engineer.getType()).isEqualTo("sales!!!!");
+        Employee sales = Employee.createEmployee("good sales", "sales");
+        assertThat(sales).isInstanceOf(Sales.class);
     }
 
     @Test
     void createManager() {
-        Employee engineer = Employee.createEmployee("good manager", "manager");
-        assertThat(engineer.getType()).isEqualTo("manager!!!!");
+        Employee manager = Employee.createEmployee("good manager", "manager");
+        assertThat(manager).isInstanceOf(Manager.class);
     }
 
     @Test
