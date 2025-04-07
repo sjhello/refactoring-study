@@ -6,7 +6,7 @@ public class Employee {
     private String name;
     private String type;
 
-    public Employee(String name, String type) {
+    protected Employee(String name, String type) {
         validateType(type);
         this.name = name;
         this.type = type;
@@ -17,6 +17,13 @@ public class Employee {
         if (!employee.contains(type)) {
             throw new IllegalArgumentException("Invalid Employee type: " + type);
         }
+    }
+
+    public static Employee createEmployee(String name, String type) {
+        return switch (type) {
+            case "engineer" -> new Engineer(name, type);
+            default -> new Employee(name, type);
+        };
     }
 
     public String getType() {
