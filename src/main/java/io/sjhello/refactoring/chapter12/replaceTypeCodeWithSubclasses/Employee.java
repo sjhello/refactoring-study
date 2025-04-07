@@ -22,6 +22,8 @@ public class Employee {
     public static Employee createEmployee(String name, String type) {
         return switch (type) {
             case "engineer" -> new Engineer(name, type);
+            case "sales" -> new Sales(name, type);
+            case "manager" -> new Manager(name, type);
             default -> new Employee(name, type);
         };
     }
