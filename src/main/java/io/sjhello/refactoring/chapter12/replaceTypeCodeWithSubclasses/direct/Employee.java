@@ -1,4 +1,4 @@
-package io.sjhello.refactoring.chapter12.replaceTypeCodeWithSubclasses;
+package io.sjhello.refactoring.chapter12.replaceTypeCodeWithSubclasses.direct;
 
 public class Employee {
     private String name;
