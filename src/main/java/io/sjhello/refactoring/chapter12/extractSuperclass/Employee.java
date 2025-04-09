@@ -1,6 +1,6 @@
 package io.sjhello.refactoring.chapter12.extractSuperclass;
 
-public class Employee {
+public class Employee extends Party {
     private Long id;
     private String name;
     private int monthlyCost;

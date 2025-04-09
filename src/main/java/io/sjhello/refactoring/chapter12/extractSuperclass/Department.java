@@ -2,7 +2,7 @@ package io.sjhello.refactoring.chapter12.extractSuperclass;
 
 import java.util.List;
 
-public class Department {
+public class Department extends Party {
     private String name;
     private List<Integer> staff = List.of(10, 20, 30);
 
