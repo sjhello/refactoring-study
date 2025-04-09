@@ -14,12 +14,9 @@ public class Employee extends Party {
         return id;
     }
 
-    public int getMonthlyCost() {
+    @Override
+    public int monthlyCost() {
         return monthlyCost;
-    }
-
-    public int getAnnualCost() {
-        return monthlyCost * 12;
     }
 }
 

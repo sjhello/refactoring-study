@@ -14,15 +14,12 @@ public class Department extends Party {
         return staff;
     }
 
-    public int totalMonthlyCost() {
+    @Override
+    public int monthlyCost() {
         return staff.stream().reduce(0, Integer::sum);
     }
 
     public int headCount() {
         return staff.size();
-    }
-
-    public int totalAnnualCost() {
-        return totalMonthlyCost() * 12;
     }
 }
